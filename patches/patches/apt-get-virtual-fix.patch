@@ -1,0 +1,44 @@
+Index: apt+chaos/cmdline/apt-get.cc
+===================================================================
+--- apt+chaos.orig/cmdline/apt-get.cc
++++ apt+chaos/cmdline/apt-get.cc
+@@ -1027,6 +1027,26 @@ bool InstallPackages(CacheFile &Cache,bo
+       _system->Lock();
+    }   
+ }
++
++pkgCache::PkgIterator
++FindVersionProviding(pkgCache::PkgIterator Pkg, pkgDepCache &Cache)
++{
++    pkgCache::PkgIterator Tmp = Pkg.ProvidesList().OwnerPkg();
++    pkgCache::VerIterator Ver;
++    pkgCache::PrvIterator Prv;
++
++    // Make sure we find a version that actually provides the virtual package
++    for (Ver = Tmp.VersionList(); Ver.end() != true; Ver++) {
++        for (Prv = Ver.ProvidesList(); Prv.end() != true; Prv++) {
++            if (Prv.ParentPkg().Name() == Pkg.Name()) {
++                Cache.SetCandidateVersion(Ver);
++                return Tmp;
++            }
++        }
++    }
++
++    return Pkg;
++}
+ 									/*}}}*/
+ // TryToInstall - Try to install a single package			/*{{{*/
+ // ---------------------------------------------------------------------
+@@ -1041,9 +1061,9 @@ bool TryToInstall(pkgCache::PkgIterator 
+    if (Cache[Pkg].CandidateVer == 0 && Pkg->ProvidesList != 0 &&
+        Pkg.ProvidesList()->NextProvides == 0)
+    {
+-      pkgCache::PkgIterator Tmp = Pkg.ProvidesList().OwnerPkg();
+-      ioprintf(c1out,_("Note, selecting %s instead of %s\n"),
+-	       Tmp.Name(),Pkg.Name());
++       pkgCache::PkgIterator Tmp = FindVersionProviding(Pkg, Cache);
++     ioprintf(c1out,_("Note, selecting %s version %s to satisfy %s\n"),
++	       Tmp.Name(), Cache[Tmp].CandVersion, Pkg.Name());
+       Pkg = Tmp;
+    }
+    

@@ -1,0 +1,13 @@
+Index: apt+chaos/apt-pkg/init.cc
+===================================================================
+--- apt+chaos.orig/apt-pkg/init.cc
++++ apt+chaos/apt-pkg/init.cc
+@@ -59,7 +59,7 @@ bool pkgInitConfig(Configuration &Cnf)
+    Cnf.Set("Dir::Cache::pkgcache","pkgcache.bin");
+    
+    // Configuration
+-   Cnf.Set("Dir::Etc","etc/apt/");
++   Cnf.Set("Dir::Etc","/usr/local/etc/apt/");
+    Cnf.Set("Dir::Etc::sourcelist","sources.list");
+    Cnf.Set("Dir::Etc::sourceparts","sources.list.d");
+    Cnf.Set("Dir::Etc::vendorlist","vendors.list");

@@ -1,0 +1,174 @@
+2011-07-06 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.6-21chaos.
+
+	* apt.spec, apt-ftparchive.conf :
+	  Add support for RHEL6-debs repository.
+
+2010-06-04 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.6-19chaos.
+
+	* [chaos5-build.patch] :
+	  Small fixes for build on CHAOS5/RHEL6. Mostly missing #includes.
+
+2009-10-09 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-18chaos.
+
+	* apt-userinst.sh :
+	  Don't *require* /etc/apt/preferences.
+
+	* : tag apt-0.7.9-17chaos.
+
+	* apt-userinst.sh :
+	  Also copy /etc/apt/preferences.
+
+2008-07-29 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-16chaos.
+
+	* apt-userinst.sh :
+	  Add missing checks on a couple command exit codes.
+
+2008-03-27 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-15chaos.
+
+	* apt-userinst.sh :
+	  Fix -n, --dry-run option.
+
+2008-03-27 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-14chaos.
+
+	* apt-userinst.sh :
+	  Add --dry-run, -n option.
+
+	* apt.spec : Dump output of apt-key to file instead of discarding 
+	  in case of failure.
+
+2008-03-12 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-13chaos.
+
+	* apt.spec : Update sources.list to new format.
+
+	* : tag apt-0.7.9-12chaos.
+
+	* apt-ftparchive.conf : Update config file to allow building
+	  repositories under both RHEL5-debs and RHEL5-debs.scf dirs.
+
+2008-01-18 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-11chaos
+
+	* apt-userinst.sh :
+	  - Add -l, --local-install option to install .debs instead
+	    of requiring packages already be in the repo.
+	  - Make script quieter in non-verbose mode.
+
+	* [apt-get-virtual-fix.patch] :
+	  Refactor patch.
+
+2008-01-17 Mark Grondona <mgrondona@llnl.gov>
+
+	* [apt-get-virtual-fix.patch] :
+	  Ensure the package chosen to satisfy a request for a virtual 
+	  package actually provides the virtual package.
+
+2008-01-09 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-10chaos
+
+	* apt-userinst.sh : --fix-missing != -f in apt-get. D'oh!
+	  s/fix-missing/fix-broken/g
+
+2008-01-09 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-9chaos
+
+	* apt-userinst.sh : 
+	  - Add -v, --verbose option and some verbose messages
+	  - Quiet GPG output unless --verbose
+	  - Run dpkg-initialize if it appears it hasn't been done already
+
+	* apt-userinst.sh : Remove quotes from fix_missing variable
+	  to avoid sending apt a null option in the normal case.
+
+2008-01-08 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-8chaos
+
+	* apt-userinst.sh : Add -f, --fix-missing option.
+
+2008-01-08 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-7chaos
+
+	* apt-userinst.sh : Add script to allow installing packages with apt
+	  as non-root user.
+
+	* apt.spec :
+	  - Only install buildbot key if trusted db doesn't exist.
+	  - Install apt-userinst script.
+
+2008-01-06 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-6chaos
+
+	* apt-ftparchive.conf : 
+	  Move default cache file from /tmp to /repo so that APT repository
+	  can be rebuilt from anywhere.
+
+2008-01-03 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-5chaos
+
+	* [parse-depends-whitespace.patch] : Be more tolerant of whitespace,
+	  or lack thereof, in Depends: version specifications. Before this
+	  patch APT would choke on versions like (=8) as opposed to (= 8).
+
+2007-12-29 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-4chaos
+
+2007-12-27 Mark Grondona <mgrondona@llnl.gov>
+
+	* apt.spec : 
+	  Add gnupg to list of Requires (for apt-key).
+
+2007-12-18 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-3chaos
+
+	* apt.spec :
+	  Fix typo in %postun.
+
+2007-12-14 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-2chaos
+
+	* apt.spec :
+	  Install builder key with apt-key in post scriptlet.
+
+	* buildbot.txt : 
+	  Add CR/LF Builder key.
+
+	* apt-ftparchive.conf, apt-release.conf : 
+	  Add config files in apt-utils specifically for LC APT
+	  repository creation, so that apt-ftparchive "just works"
+	  after apt-utils is installed in Build Farm.
+
+2007-12-13 Mark Grondona <mgrondona@llnl.gov>
+
+	* apt.spec : 
+	  Install sources.list suitable for production systems.  Will have 
+	  to be overwritten on the testbed.
+
+2007-12-13 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag apt-0.7.9-1chaos
+
+	* : Initial commit.
+

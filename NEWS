@@ -1,0 +1,82 @@
+apt-0.7.9-21 (2011-07-06):
+ - Add support for RHEL6-debs repositories for CHAOS5.
+
+apt-0.7.9-20 (2010-12-10):
+ - apt-userinst: Add --force-depends option to dpkg
+ - apt-usersint: Log stderr of commands when the fail
+
+apt-0.7.9-19 (2010-06-04):
+ - Fixes for RHEL6/CHAOS5 build.
+
+apt-0.7.9-18 (2009-10-09):
+ - But don't _require_ /etc/apt/preferences in apt-userinst.
+
+apt-0.7.9-17 (2009-10-09):
+ - Also copy /etc/apt/preferences from the host in apt-userisnt.
+
+apt-0.7.9-16 (2008-07-29):
+ - Fix unchecked return code in apt-userinst -l, --localinstall 
+   which could lead to silent errors.
+
+apt-0.7.9-15 (2008-03-31):
+ - Fix apt-userinst, which was always passing -s, --simulate to 
+   apt-get install.
+
+apt-0.7.9-14 (2008-03-27):
+ - Improve error reporting in RPM post-install script if apt-key fails.
+ - apt-userinst: Add -n, --dry-run option.
+
+apt-0.7.9-13 (2008-03-12):
+ - Update default /etc/apt/sources.list with new repo format.
+
+apt-0.7.9-12 (2008-03-12):
+ - Add RHEL5-debs.scf repo to apt-ftparchive.conf. (Only affects
+   apt-utils package).
+
+apt-0.7.9-11 (2008-01-18):
+ - Fix apt-get's version selection algorithm when different versions 
+   of the same package "Provide" different virtual packages.
+ - Add apt-userinst -l, --local-install option to install packages
+   directly (i.e. .debs) instead of requiring them to be in the repo.
+
+apt-0.7.9-10 (2008-01-09):
+ - apt-userinst option change: --fix-missing becomes --fix-broken
+ - Call apt-get -f, not apt-get --fix-missing, with apt-userinst --fix-broken
+
+apt-0.7.9-9 (2008-01-09):
+ - Fix bug in apt-userinst that cause it to fail to install packages
+ - Add -v, --verbose option to apt-userinst along with some verbose output
+ - apt-userinst now runs dpkg-initialize if /usr/local appears empty
+ - Quiet GPG output in apt-userinst unless --verbose
+
+apt-0.7.9-8 (2008-01-08):
+ - Add -f, --fix-missing option to apt-userinst.
+
+apt-0.7.9-7 (2008-01-08):
+ - Added apt-userinst script to run 'apt-get install' as normal user.
+ - Make /etc/apt/buildkey.txt readable by other for use in apt-userinst.
+ - Only run apt-key in %post if trusted DB does not exist yet.
+
+apt-0.7.9-6 (2008-01-06):
+ - Default apt-ftparchive.conf now specified cache file under /repo.
+
+apt-0.7.9-5 (2008-01-03):
+ - Allow lack of whitespace in Depends: version specification.
+
+apt-0.7.9-4 (2007-12-29):
+ - Require gnupg.
+
+apt-0.7.9-3 (2007-12-18):
+ - Fix typo in %postun RPM scriptlet.
+
+apt-0.7.9-2 (2007-12-14):
+ - Added apt-ftparchive.conf and apt-release.conf for repo mgmt.
+ - Added CR/LF Builder key, which is registered with apt-key in %post.
+ - Install /etc/apt/sources.list suitable for production LC systems
+   (This will need to be overwritten in testbed or other machines without
+   access to /repo.
+
+apt-0.7.9-1 (2007-12-13):
+ - Initial version for LC /usr/local
+ - Mostly unmodified subset of apt-0.7.9 with apt.conf 
+   pointing to /usr/local/dpkg-db.

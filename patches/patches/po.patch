@@ -1,0 +1,12 @@
+Index: apt+chaos/po/da.po
+===================================================================
+--- apt+chaos.orig/po/da.po
++++ apt+chaos/po/da.po
+@@ -2878,7 +2878,6 @@ msgid "Connection closed prematurely"
+ msgstr "Forbindelsen lukkedes for hurtigt"
+ 
+ #, fuzzy
+-#~| msgid "Select failed"
+ #~ msgid "openpty failed\n"
+ #~ msgstr "Valg mislykkedes"
+ 

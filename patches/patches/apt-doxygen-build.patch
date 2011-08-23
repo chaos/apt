@@ -1,0 +1,12 @@
+Index: apt+chaos/doc/makefile
+===================================================================
+--- apt+chaos.orig/doc/makefile
++++ apt+chaos/doc/makefile
+@@ -57,6 +57,7 @@ $(BUILD)/doc/Doxyfile: Doxyfile.in
+ 
+ $(BUILD)/doc/doxygen-stamp: $(DOXYGEN_SOURCES) $(BUILD)/doc/Doxyfile
+ 	rm -fr $(BUILD)/doc/doxygen
++	mkdir -p -m0755 $(BUILD)/build/doc/doxygen
+ 	$(DOXYGEN) $(BUILD)/doc/Doxyfile
+ 	touch $(BUILD)/doc/doxygen-stamp
+ 

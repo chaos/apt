@@ -1,0 +1,26 @@
+Index: apt+chaos/apt-pkg/deb/deblistparser.cc
+===================================================================
+--- apt+chaos.orig/apt-pkg/deb/deblistparser.cc
++++ apt+chaos/apt-pkg/deb/deblistparser.cc
+@@ -512,7 +511,7 @@ bool debListParser::ParseDepends(pkgCach
+ {
+    const char *Start;
+    const char *Stop;
+-   if (Section.Find(Tag,Start,Stop) == false)
++   if (Section.Find(Tag,Start,Stop) == false || Start[0] == '\n')
+       return true;
+    
+    string Package;
+Index: apt+chaos/apt-pkg/tagfile.cc
+===================================================================
+--- apt+chaos.orig/apt-pkg/tagfile.cc
++++ apt+chaos/apt-pkg/tagfile.cc
+@@ -316,7 +316,7 @@ bool pkgTagSection::Find(const char *Tag
+       if (Start >= End)
+ 	 return _error->Error("Internal parsing error");
+       
+-      for (; (isspace(*Start) != 0 || *Start == ':') && Start < End; Start++);
++      for (; (isblank(*Start) != 0 || *Start == ':') && Start < End; Start++);
+       for (; isspace(End[-1]) != 0 && End > Start; End--);
+       
+       return true;

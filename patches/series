@@ -1,0 +1,20 @@
+# Fix doxygen portion of build
+apt-doxygen-build.patch
+
+# Fix typo in one translation file
+po.patch
+
+# Allow empty Depends: lines
+empty-depends.patch
+
+# Allow no whitespace between conditional and version number
+#  on Depends: lines (e.g. (=8) versus (= 8)
+parse-depends-whitespace.patch
+
+# Select the first version of a package that actually provides a
+#  virtual package, instead of just installing the version that
+#  appears newest (it may not actually provide the virtual package). 
+apt-get-virtual-fix.patch
+
+# Fixes for build issues on chaos5/rhel6
+chaos5-build.patch

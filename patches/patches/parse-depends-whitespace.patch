@@ -1,0 +1,13 @@
+Index: apt+chaos/apt-pkg/deb/deblistparser.cc
+===================================================================
+--- apt+chaos.orig/apt-pkg/deb/deblistparser.cc
++++ apt+chaos/apt-pkg/deb/deblistparser.cc
+@@ -410,7 +410,7 @@ const char *debListParser::ParseDepends(
+    {
+       // Skip the '('
+       for (I++; I != Stop && isspace(*I) != 0 ; I++);
+-      if (I + 3 >= Stop)
++      if (I + 2 >= Stop)
+ 	 return 0;
+       I = ConvertRelation(I,Op);
+       

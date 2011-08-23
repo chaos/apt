@@ -1,0 +1,37 @@
+Index: apt+chaos/apt-pkg/acquire.cc
+===================================================================
+--- apt+chaos.orig/apt-pkg/acquire.cc
++++ apt+chaos/apt-pkg/acquire.cc
+@@ -29,6 +29,7 @@
+ #include <sys/time.h>
+ #include <errno.h>
+ #include <sys/stat.h>
++#include <stdio.h> /* snprintf */
+ 									/*}}}*/
+ 
+ using namespace std;
+Index: apt+chaos/apt-pkg/contrib/sha256.h
+===================================================================
+--- apt+chaos.orig/apt-pkg/contrib/sha256.h
++++ apt+chaos/apt-pkg/contrib/sha256.h
+@@ -17,6 +17,7 @@
+ #include <string>
+ #include <cstring>
+ #include <algorithm>
++#include <stdint.h>
+ 
+ using std::string;
+ using std::min;
+Index: apt+chaos/apt-pkg/deb/dpkgpm.cc
+===================================================================
+--- apt+chaos.orig/apt-pkg/deb/dpkgpm.cc
++++ apt+chaos/apt-pkg/deb/dpkgpm.cc
+@@ -34,6 +34,8 @@
+ 
+ #include <config.h>
+ #include <apti18n.h>
++
++#include <sys/stat.h> /* chmod(2) */
+ 									/*}}}*/
+ 
+ using namespace std;
